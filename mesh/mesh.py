@@ -64,7 +64,10 @@ class Mesh(object):
         """
 
         if filename is not None:
-            self.load_from_file(filename)
+            if(filename.endswith('.obj')):
+                self.load_from_obj(filename)
+            else:
+                self.load_from_file(filename)
             if hasattr(self, 'f'):
                 self.f = np.require(self.f, dtype=np.uint32)
             self.v = np.require(self.v, dtype=np.float64)
